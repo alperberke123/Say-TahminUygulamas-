@@ -20,7 +20,7 @@ class _TahminEkraniState extends State<TahminEkrani> {
   @override
   void initState() {
     super.initState();
-    var rasgeleSayi = Random().nextInt(101);
+    rasgeleSayi = Random().nextInt(101);
     print("Üretilen Sayı = $rasgeleSayi");
   }
 
@@ -37,10 +37,12 @@ class _TahminEkraniState extends State<TahminEkrani> {
           children: <Widget> [
             Text("Kalan Hak : $kalanHak",style: TextStyle(color: Colors.pink,fontSize: 30),),
             Text("Yardım : $yardim",style: TextStyle(color: Colors.black54,fontSize: 24),),
-            const Padding(
+            Padding(
               padding:  EdgeInsets.all(10.0),
               child: TextField(
+                controller: tfController,
                 keyboardType: TextInputType.number,
+                textAlign: TextAlign.center,
                 decoration: InputDecoration(
                   labelText: "Tahmin",
                   border: OutlineInputBorder(
@@ -53,23 +55,23 @@ class _TahminEkraniState extends State<TahminEkrani> {
               width: 200,
               height: 50,
               child: ElevatedButton(
-                child: const Text("Tahmin Et",style: TextStyle(color: Colors.white),),
+                child:  Text("Tahmin Et",style: TextStyle(color: Colors.white),),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.pinkAccent,
-                  shape: const LinearBorder(),
+                  shape: LinearBorder(),
                 ),
                 onPressed: (){
-
                   setState(() {
                     kalanHak = kalanHak -1;
                   });
+
                   int tahmin = int.parse(tfController.text);
 
-                  if(tahmin ==rasgeleSayi ){
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const sonucEkrani ()));
-                    return;
+                  if(tahmin == rasgeleSayi ){
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => sonucEkrani(sonuc: true,) ));
+
                   }
-                  if(tahmin <rasgeleSayi){
+                  if(tahmin < rasgeleSayi ){
                     setState(() {
                       yardim = "Tahmini Yükselt";
                     });
@@ -80,12 +82,9 @@ class _TahminEkraniState extends State<TahminEkrani> {
                     });
                   }
                   if(kalanHak == 0){
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const sonucEkrani ()));
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>  sonucEkrani(sonuc: false,) ));
                   }
-
-
-
-
+                  tfController.text ="";
                 },
               ),
             ),
