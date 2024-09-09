@@ -35,15 +35,15 @@ class _TahminEkraniState extends State<TahminEkrani> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget> [
-            Text("Kalan Hak : $kalanHak",style: TextStyle(color: Colors.pink,fontSize: 30),),
-            Text("Yardım : $yardim",style: TextStyle(color: Colors.black54,fontSize: 24),),
+            Text("Kalan Hak : $kalanHak",style: const TextStyle(color: Colors.pink,fontSize: 30),),
+            Text("Yardım : $yardim",style: const TextStyle(color: Colors.black54,fontSize: 24),),
             Padding(
-              padding:  EdgeInsets.all(10.0),
+              padding:  const EdgeInsets.all(10.0),
               child: TextField(
                 controller: tfController,
                 keyboardType: TextInputType.number,
                 textAlign: TextAlign.center,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: "Tahmin",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -55,10 +55,10 @@ class _TahminEkraniState extends State<TahminEkrani> {
               width: 200,
               height: 50,
               child: ElevatedButton(
-                child:  Text("Tahmin Et",style: TextStyle(color: Colors.white),),
+                child:  const Text("Tahmin Et",style: TextStyle(color: Colors.white),),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.pinkAccent,
-                  shape: LinearBorder(),
+                  shape: const LinearBorder(),
                 ),
                 onPressed: (){
                   setState(() {
